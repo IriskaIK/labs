@@ -50,6 +50,9 @@ int main(){
     cin >> c;
 
 
+
+    sadas
+
     if(!TriangeExistance(a, b, c)){
         return 0;
     }
