@@ -15,3 +15,6 @@ add_executable(numSumOfSides
 
 add_executable(IsNumPalindrome
         semester1/IsNumPalindrome.cpp)
+
+add_executable(longMath
+        semester1/longMath.cpp)
