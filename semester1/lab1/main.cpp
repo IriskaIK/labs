@@ -2,7 +2,6 @@
 // Created by Pavel on 20.10.2023.
 //
 
-//block 1 task 11, 12
 #include <iostream>
 #include <cmath>
 using namespace std;
@@ -36,7 +35,12 @@ void block1Task11(double x, double y, double z){
 };
 
 
-void block2Task6(double a, double b, double h, double n){
+void block2Task6(double a, double b, double h, int n){
+    if(b<a){
+        cout << "Invalid input!";
+        return;
+    }
+
     double x;
     double eulerNumber = exp(1);
     for (x = a; x <= b; x += h){
@@ -75,7 +79,8 @@ int main(){
 
 
 
-    double a, b, h, n;
+    double a, b, h;
+    int n;
     cout << "\nEnter variables(a,b,h,n) for second block\n";
     cout << "\nEnter a:\n";
     cin >> a;
@@ -83,7 +88,7 @@ int main(){
     cin >> b;
     cout << "\nEnter h:\n";
     cin >> h;
-    cout << "\nEnter n:\n";
+    cout << "\nEnter n(integer):\n";
     cin >> n;
 
     block2Task6(a, b, h, n);
