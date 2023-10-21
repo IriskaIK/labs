@@ -36,6 +36,7 @@ void block1Task11(double x, double y, double z){
 
 
 void block2Task6(double a, double b, double h, int n){
+    cout << "\n\nBlock 2 Task 6";
     if(b<a){
         cout << "Invalid input!";
         return;
@@ -43,6 +44,7 @@ void block2Task6(double a, double b, double h, int n){
 
     double x;
     double eulerNumber = exp(1);
+
     for (x = a; x <= b; x += h){
         double factorial = 1; // int, but for better precision in dividing it should be double
         double sum = 0;
@@ -57,6 +59,33 @@ void block2Task6(double a, double b, double h, int n){
 
         double xSqr = pow(x, 2);
         double y = (1+(2*xSqr))*pow(eulerNumber, xSqr);
+
+        cout << "\nS: " << sum << "  Y: " << y;
+    }
+}
+
+void block2Task1(double a, double b, double h, int n){
+    cout << "\n\nBlock 2 Task 1";
+    if(b<a){
+        cout << "Invalid input!";
+        return;
+    }
+
+    double x;
+
+    for (x = a; x <= b; x += h){
+        double factorial = 1; // int, but for better precision in dividing it should be double
+        double sum = 0;
+
+        for(int k = 0; k<=n; k++){
+            if(k!=0){
+                factorial = factorial * (k*2) * ((k*2)+1);
+            }
+            sum += pow(-1, k) * (pow(x, (2*k)+1)/factorial);
+        }
+
+
+        double y = sin(x);
 
         cout << "\nS: " << sum << "  Y: " << y;
     }
@@ -91,6 +120,7 @@ int main(){
     cout << "\nEnter n(integer):\n";
     cin >> n;
 
+    block2Task1(a, b, h, n);
     block2Task6(a, b, h, n);
 
 
