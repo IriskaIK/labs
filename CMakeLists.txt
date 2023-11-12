@@ -19,6 +19,9 @@ add_executable(IsNumPalindrome
 add_executable(longMath
         semester1/homework/longMath.cpp)
 
+
 add_executable(lab1
-        semester1/lab1/main.cpp
-)
+        semester1/lab1/main.cpp)
+
+add_executable(lab2
+        semester1/lab2/main.cpp)
