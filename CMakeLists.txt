@@ -25,3 +25,6 @@ add_executable(lab1
 
 add_executable(lab2
         semester1/lab2/main.cpp)
+
+add_executable(lab3
+        semester1/lab3/main.cpp)

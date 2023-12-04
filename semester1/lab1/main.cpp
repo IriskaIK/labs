@@ -64,6 +64,8 @@ void block2Task6(double a, double b, double h, int n){
     }
 }
 
+
+
 void block2Task1(double a, double b, double h, int n){
     cout << "\n\nBlock 2 Task 1";
     if(b<a){
@@ -93,18 +95,18 @@ void block2Task1(double a, double b, double h, int n){
 
 
 int main(){
-    double x, y, z;
-    cout << "Enter variables(x, y, z) for first block\n";
-    cout << "\nEnter x:\n";
-    cin >> x;
-    cout << "\nEnter y:\n";
-    cin >> y;
-    cout << "\nEnter z:\n";
-    cin >> z;
-
-
-
-    block1Task11(x, y, z);
+//    double x, y, z;
+//    cout << "Enter variables(x, y, z) for first block\n";
+//    cout << "\nEnter x:\n";
+//    cin >> x;
+//    cout << "\nEnter y:\n";
+//    cin >> y;
+//    cout << "\nEnter z:\n";
+//    cin >> z;
+//
+//
+//
+//    block1Task11(x, y, z);
 
 
 
@@ -120,9 +122,50 @@ int main(){
     cout << "\nEnter n(integer):\n";
     cin >> n;
 
-    block2Task1(a, b, h, n);
-    block2Task6(a, b, h, n);
 
+    double x;
+
+    for(x=a; x<b; x+=h){
+
+        double sum = 0;
+        double factorial = 1;
+
+
+
+
+        for(double k=0; k<n; k++){
+
+            if(k!=0){
+                factorial *= k;
+            }
+//            double factorial = 1;
+//            for(int i = 0; i <= k; i++){
+//                if(i!=0){
+//                    factorial *= i;
+//                }
+//            }
+
+            sum += (  ((2*k) + 1) / factorial   )     *   pow(x, 2*k);
+
+        }
+        double eulerNumber = exp(1);
+
+        double y = 0;
+        double first_part = 1+ (2* pow(x,2));
+        double sqrX = pow(x, 2);
+        double second_part = pow(eulerNumber, sqrX);
+
+        y = first_part * second_part;
+
+        cout << "S(x)=" << sum << ";Y(x)=" << y << '\n';
+
+
+    }
+
+
+
+//    block2Task1(a, b, h, n);
+//    block2Task6(a, b, h, n);
 
 
 
