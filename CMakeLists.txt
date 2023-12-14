@@ -28,3 +28,6 @@ add_executable(lab2
 
 add_executable(lab3
         semester1/lab3/main.cpp)
+
+add_executable(lab2_But_I_Am_Drunk
+        semester1/lab2_But_I_Am_Drunk/main.cpp)
