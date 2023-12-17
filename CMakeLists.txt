@@ -31,3 +31,9 @@ add_executable(lab3
 
 add_executable(lab2_But_I_Am_Drunk
         semester1/lab2_But_I_Am_Drunk/main.cpp)
+
+add_executable(matrixMaxElement
+        semester1/matrixMaxElement.cpp)
+
+add_executable(numAgeToString
+        semester1/numAgeToString.cpp)
