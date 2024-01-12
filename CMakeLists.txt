@@ -37,3 +37,12 @@ add_executable(matrixMaxElement
 
 add_executable(numAgeToString
         semester1/numAgeToString.cpp)
+
+add_executable(drochna
+        semester1/drochna.cpp)
+
+add_executable(vovaExam
+        vovaExam.cpp)
+
+add_executable(linkedList
+        dataStructures/linkedList.cpp)
