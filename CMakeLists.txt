@@ -46,3 +46,8 @@ add_executable(vovaExam
 
 add_executable(linkedList
         dataStructures/linkedList.cpp)
+add_executable(stack
+        dataStructures/stack.cpp)
+add_executable(queue
+        dataStructures/queue.cpp)
+add_executable(hashTable dataStructures/hashTable.cpp)
