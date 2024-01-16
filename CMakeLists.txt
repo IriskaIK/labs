@@ -51,3 +51,5 @@ add_executable(stack
 add_executable(queue
         dataStructures/queue.cpp)
 add_executable(hashTable dataStructures/hashTable.cpp)
+add_executable(binaryTree dataStructures/binaryTree.cpp
+        dataStructures/binaryTree.cpp)
