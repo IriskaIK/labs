@@ -265,7 +265,6 @@ public:
 
 int main() {
 
-    // TODO: write comments for BinarySearchTree class
 
 
     BinarySearchTree bst;

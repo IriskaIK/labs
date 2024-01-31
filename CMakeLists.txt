@@ -46,10 +46,20 @@ add_executable(vovaExam
 
 add_executable(linkedList
         dataStructures/linkedList.cpp)
+add_executable(staticStack
+        dataStructures/staticStack.cpp)
+add_executable(staticQueue
+        dataStructures/staticQueue.cpp)
+add_executable(hashTable
+        dataStructures/hashTable.cpp)
+add_executable(binaryTree
+        dataStructures/binarySearchTree.cpp)
+add_executable(maxHeap
+        dataStructures/maxHeap.cpp)
 add_executable(stack
-        dataStructures/stack.cpp)
+        dataStructures/dynamicStack.cpp)
 add_executable(queue
-        dataStructures/queue.cpp)
-add_executable(hashTable dataStructures/hashTable.cpp)
-add_executable(binaryTree dataStructures/binaryTree.cpp
-        dataStructures/binaryTree.cpp)
+        dataStructures/dynamicQueue.cpp)
+add_executable(bubbleSort sortAlgorithms/bubbleSort.cpp)
+add_executable(selectionSort sortAlgorithms/selectionSort.cpp)
+add_executable(insertionSort sortAlgorithms/insertionSort.cpp)
