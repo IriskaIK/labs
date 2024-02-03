@@ -6,7 +6,6 @@ using namespace std;
 //FIFO(first in, first out)
 
 //Implementation of queue using linked list.
-//Firstly see "staticQueue.cpp" to have some understanding of how queue works
 
 // Node structure for the linked list
 class Node {

@@ -6,7 +6,6 @@ using namespace std;
 
 //Implementation of stack using array.
 //Using of array do not provide necessary dynamic for stack data structures.
-//But here you can ?more easily? understand main concept of stack.
 //See stack implementation using linked list in "dynamicStack.cpp"
 //P.s. just try to understand this, and then move to queue ;)
 

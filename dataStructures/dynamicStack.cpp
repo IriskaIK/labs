@@ -8,7 +8,6 @@ using namespace std;
 
 
 //Implementation of stack using linked list.
-//Firstly see "staticStack.cpp" to have some understanding of how stack works
 //P.s. just try to understand this, and then move to queue ;)
 
 
