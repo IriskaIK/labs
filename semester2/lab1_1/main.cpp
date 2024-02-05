@@ -2,9 +2,6 @@
 // Created by Павло on 05.02.2024.
 //
 
-//
-// Created by Павло on 03.02.2024.
-//
 #include <iostream>
 using namespace std;
 
