@@ -66,3 +66,6 @@ add_executable(insertionSort sortAlgorithms/insertionSort.cpp)
 
 add_executable(lab2_1
         semester2/lab1/main.cpp)
+
+add_executable(lab2_1_1
+        semester2/lab1_1/main.cpp)
