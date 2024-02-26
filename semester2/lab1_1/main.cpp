@@ -12,11 +12,21 @@ struct Node{
     explicit Node(int value): value(value), next(nullptr){};
 };
 
+
+// add new Node
 void pushNode(int value, Node** head){
+
+    // створюю нову ноду
     Node* newNode = new Node(value);
+
+
+    // задаю некст на елемент який є головою зараз
     newNode->next = *head;
+
+    // робимо новий елемент головою
     *head = newNode;
 }
+
 
 void displayStack(Node* head){
     if(head == nullptr){
@@ -66,6 +76,9 @@ void freeMemory(Node** head){
     while(*head != nullptr){
         popNode(head);
     }
+
+
+
 }
 
 
