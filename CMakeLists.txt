@@ -74,3 +74,9 @@ add_executable(lab2_2
 
 add_executable(lab2_2_1
         semester2/lab2_1/main.cpp)
+
+add_executable(lab2_3_1
+        semester2/lab3/task1.cpp)
+
+add_executable(lab2_3_2
+        semester2/lab3/task2.cpp)

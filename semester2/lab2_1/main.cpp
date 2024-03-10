@@ -1,6 +1,4 @@
-//
-// Created by Павло on 26.02.2024.
-//
+
 //
 // Created by Павло on 26.02.2024.
 //
@@ -105,6 +103,7 @@ public:
             head->prev = tail;
             tail->next = head;
         }else if(*toDelete == tail){
+            // if element is a tail  in the LinkedList than set prev one as a tail of linked list
             tail->prev->next = head;
             tail = tail->prev;
             head->prev = tail;
@@ -131,8 +130,7 @@ public:
             Node* nextToCurrent = current->next;
 
             if (value % 2 == 0) {
-                cout << "Heere" << '\n';
-                cout << value << '\n';
+                // pass
                 if(!firstEvenNode){
                     firstEvenNode = current;
                 }
