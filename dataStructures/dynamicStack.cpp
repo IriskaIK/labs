@@ -55,6 +55,7 @@ public:
             Node* temp = top;
             top = top->next;
             delete temp;
+            cout << 1;
         }
     }
 
@@ -83,6 +84,12 @@ int main() {
     cout << "Top element: " << someStack.peek() << '\n';
 
     someStack.pop();
+    someStack.pop();
+    someStack.pop();
+    someStack.pop();
+    someStack.pop();
+
+
     cout << "Top element: " << someStack.peek() << '\n';
 
     return 0;

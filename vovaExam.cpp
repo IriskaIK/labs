@@ -15,6 +15,8 @@ struct Node{
 };
 
 
+
+
 int main(){
 
     Node* firstNode;
@@ -22,6 +24,8 @@ int main(){
 
     Node* secondNode;
     secondNode->value = 20;
+
+
 
     firstNode->next = secondNode;
 
