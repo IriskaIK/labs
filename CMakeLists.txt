@@ -84,3 +84,6 @@ add_executable(lab2_3_2
 add_executable(iv_task1 semester2/ivanovModule1/task1.cpp)
 add_executable(iv_task2 semester2/ivanovModule1/task2.cpp)
 add_executable(iv_task3 semester2/ivanovModule1/task3.cpp)
+add_executable(test1 semester2/test1.cpp)
+
+add_executable(lab2_4 semester2/lab4/main.cpp)
