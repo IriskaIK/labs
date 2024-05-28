@@ -136,53 +136,60 @@ TreeNode* insert(TreeNode* root, int value) {
 }
 
 int task3(TreeNode* root, int v){
-    if (root == nullptr)
+    if (root == nullptr) {
         return 0;
+    }
 
-    if (root->data <= v)
-        return task3(root->right, v);
+    // Рекурсивно обчислюємо кількість у лівому та правому піддереві
+    int leftCount = task3(root->left, v);
+    int rightCount = task3(root->right, v);
 
-    return 1 + task3(root->right, v) + task3(root->left, v);
+    // Якщо поточний вузол має значення більше за v, додаємо 1
+    if (root->data > v) {
+        return 1 + leftCount + rightCount;
+    } else {
+        return leftCount + rightCount;
+    }
 }
 
 
 int main(){
 
     // task 1
-//    DoublyLinkedList list;
-//
-//    list.append(5);
-//    list.append(5);
-//    list.append(10);
-//    list.append(20);
-//    list.append(20);
-//    list.append(30);
-//    list.append(40);
-//    list.append(45);
-//    list.append(45);
-//    list.append(45);
-//    list.append(50);
-//    list.append(50);
-//
-//    list.displayByHead();
-//    task1(&list);
-//    list.displayByHead();
+    DoublyLinkedList list;
+
+    list.append(5);
+    list.append(5);
+    list.append(10);
+    list.append(20);
+    list.append(20);
+    list.append(30);
+    list.append(40);
+    list.append(45);
+    list.append(45);
+    list.append(45);
+    list.append(50);
+    list.append(50);
+
+    list.displayByHead();
+    task1(&list);
+    list.displayByHead();
 
 
     // task 2
 
 
     // task 3
-//    TreeNode* root = nullptr;
-//    root = insert(root, 5);
-//    insert(root, 3);
-//    insert(root, 2);
-//    insert(root, 1);
-//    insert(root, 6);
-//    insert(root, 8);
-//    int v = 4;
-//    int count = task3(root, v);
-//    cout << "Count of elements greater than: " << v << ", in binary tree: " << count << '\n';
+    TreeNode* root = nullptr;
+    root = insert(root, 5);
+    insert(root, 3);
+    insert(root, 2);
+    insert(root, 1);
+    insert(root, 6);
+    insert(root, 8);
+    int v = 4;
+    int count = task3(root, v);
+    cout << "Count of elements greater than: " << v << ", in binary tree: " << count << '\n';
 
 
     return 0;
