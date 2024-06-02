@@ -108,6 +108,102 @@ void task1(DoublyLinkedList* list){
 
 }
 
+// task 2
+
+const int arrSize = 4;
+
+class MatrixNode{
+public:
+    int rowIndex;
+    int columnIndex;
+
+    int data;
+
+    MatrixNode* nextInRow;
+    MatrixNode* nextInColumn;
+
+    explicit MatrixNode(int rowIndex, int columnIndex, int data):
+    rowIndex(rowIndex), columnIndex(columnIndex), data(data), nextInRow(nullptr), nextInColumn(nullptr) {}
+
+};
+
+
+
+
+void task2(){
+    MatrixNode* rows[4];
+    MatrixNode* cols[4];
+
+    int matrix[4][4]={
+            {0, 1, 2, 0},
+            {0, 0, 0 ,1},
+            {2, 0, 1, 0},
+            {0, 4, 1,0}
+    };
+    // this code is representation of matrix above
+    // you dont need this code
+    // to be honest i dont want waste my time to write an algorithm, which will convert 2-D matrix array into this shit
+    // soo dont pay attention to it, go to 170 line, there are code that you need for this task
+    auto* el1 = new MatrixNode(0, 1, 1);
+    auto* el2 = new MatrixNode(0, 2, 2);
+    rows[0] = el1;
+    cols[1]= el1;
+    cols[2]= el2;
+    el1->nextInRow = el2;
+    auto* el3 = new MatrixNode(1, 3, 1);
+    auto* el4 = new MatrixNode(2, 0, 2);
+    auto* el5 = new MatrixNode(2, 2, 1);
+    rows[1] = el3;
+    rows[2]= el4;
+    cols[3] = el3;
+    cols[0] = el4;
+    el2->nextInColumn = el5;
+    el4->nextInRow = el5;
+    auto* el6 = new MatrixNode(3, 1, 4);
+    auto* el7 = new MatrixNode(3, 2, 1);
+    rows[3] = el6;
+    el1->nextInColumn = el6;
+    el5->nextInColumn = el7;
+    el6->nextInRow= el7;
+
+
+    int finalMatrix[4][4] = {0};
+    for(int i =0; i < arrSize; i++){
+        for(int j = 0; j<arrSize; j++){
+
+            MatrixNode* rNode = rows[i];
+            MatrixNode* cNode = cols[j];
+            int value = 0;
+            while (rNode && cNode){
+
+                if(rNode->columnIndex < cNode->rowIndex){
+                    rNode = rNode->nextInRow;
+                }
+                else if(rNode->columnIndex > cNode->rowIndex){
+                    cNode = cNode->nextInColumn;
+                }
+                else{
+//                    cout << i << " " << j << " : " << rNode->data << " " << cNode->data << "\n";
+//                    cout << rNode->rowIndex << " " << cNode->columnIndex << "\n\n";
+                    value += (rNode->data) * (cNode->data);
+                    rNode = rNode->nextInRow;
+                    cNode = cNode->nextInColumn;
+                }
+            }
+            finalMatrix[i][j] = value;
+        }
+    }
+
+
+    for(int row = 0; row < arrSize; row++){
+        cout << '\n';
+        for(int col = 0; col < arrSize; col++){
+            cout << finalMatrix[row][col] << " ";
+        }
+    }
+
+}
+
 
 
 
@@ -156,40 +252,40 @@ int task3(TreeNode* root, int v){
 int main(){
 
     // task 1
-    DoublyLinkedList list;
-
-    list.append(5);
-    list.append(5);
-    list.append(10);
-    list.append(20);
-    list.append(20);
-    list.append(30);
-    list.append(40);
-    list.append(45);
-    list.append(45);
-    list.append(45);
-    list.append(50);
-    list.append(50);
-
-    list.displayByHead();
-    task1(&list);
-    list.displayByHead();
+//    DoublyLinkedList list;
+//
+//    list.append(5);
+//    list.append(5);
+//    list.append(10);
+//    list.append(20);
+//    list.append(20);
+//    list.append(30);
+//    list.append(40);
+//    list.append(45);
+//    list.append(45);
+//    list.append(45);
+//    list.append(50);
+//    list.append(50);
+//
+//    list.displayByHead();
+//    task1(&list);
+//    list.displayByHead();
 
 
     // task 2
-
+    task2();
 
     // task 3
-    TreeNode* root = nullptr;
-    root = insert(root, 5);
-    insert(root, 3);
-    insert(root, 2);
-    insert(root, 1);
-    insert(root, 6);
-    insert(root, 8);
-    int v = 4;
-    int count = task3(root, v);
-    cout << "Count of elements greater than: " << v << ", in binary tree: " << count << '\n';
+//    TreeNode* root = nullptr;
+//    root = insert(root, 5);
+//    insert(root, 3);
+//    insert(root, 2);
+//    insert(root, 1);
+//    insert(root, 6);
+//    insert(root, 8);
+//    int v = 4;
+//    int count = task3(root, v);
+//    cout << "Count of elements greater than: " << v << ", in binary tree: " << count << '\n';
 
 
     return 0;

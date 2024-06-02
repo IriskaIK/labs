@@ -87,7 +87,9 @@ add_executable(iv_task3 semester2/ivanovModule1/task3.cpp)
 add_executable(test1 semester2/test1.cpp)
 
 add_executable(lab2_4 semester2/lab4/main.cpp)
+
+
 add_executable(exam_2_variant_2 semester2/exam/variant_2/main.cpp)
 add_executable(exam_2_variant_6 semester2/exam/variant_6/main.cpp)
-add_executable(someshit semester2/someshit.cpp)
 add_executable(exam_2_variant_10 semester2/exam/variant_10/main.cpp)
+add_executable(exam_2_variant_22 semester2/exam/variant_22/main.cpp)
