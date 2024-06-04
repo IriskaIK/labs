@@ -81,6 +81,29 @@ public:
     }
 };
 
+
+void deleteSelfLoops(GraphNode* graphArr[]){
+    for (int row = 0; row < rows; row++) {
+        GraphNode* current = graphArr[row];
+        GraphNode* prev = nullptr;
+        while (current) {
+            if (current->index == row) { // self-loop found
+                if (prev == nullptr) { // loop is the first node in the row
+                    graphArr[row] = current->next;
+                } else {
+                    prev->next = current->next;
+                }
+                GraphNode* temp = current;
+                current = current->next;
+                delete temp;
+            } else {
+                prev = current;
+                current = current->next;
+            }
+        }
+    }
+}
+
 int main(){
 
     Graph graph;
