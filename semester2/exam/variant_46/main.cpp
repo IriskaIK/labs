@@ -258,10 +258,10 @@ void task3(GraphNode* graphArr[]){
     for(int row = 0; row < rows; row++){
         GraphNode* current = graphArr[row];
 
-        GraphNode* nodeToReverse = new GraphNode(row);
 
         while (current){
-            cout << current->index << '\n';
+            GraphNode* nodeToReverse = new GraphNode(row);
+
             if(graphNew.arr[current->index]){
                 nodeToReverse->next = graphNew.arr[current->index];
                 graphNew.arr[current->index] = nodeToReverse;
