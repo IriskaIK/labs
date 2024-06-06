@@ -131,98 +131,54 @@ void task1(Node* head){
 
 
 // task 2
-class TreeNode {
-public:
-    //class for Node, could be a structure, but class
-
-    //value of Node
+struct TreeNode {
     int value;
-
-    //left child(leaf) of Node
     TreeNode* left;
-
-    //right child(leaf) of Node
     TreeNode* right;
 
-
-    //constructor
-    explicit TreeNode(int value) : value(value), left(nullptr), right(nullptr) {}
+    TreeNode(int val) : value(val), left(nullptr), right(nullptr) {}
 };
 
-class BinaryTree{
+class BinaryTree {
 private:
-    //root of tree aka: parent or grandparent or grand grandparent or etc. of all nodes in tree
     TreeNode* root;
 
-    //just a quantity of nodes in tree
-    int countOfNodes;
-
-    void _addTo(TreeNode* node, int value){
-        //recursive method which receive node and value(for new Node)
-        //this method will recursively call himself until place for new Node is found
-
-
-        if(value < node->value ){
-            //checks if value of new Node is lower than value of given node
-            //if it is, we should look for place for new node in the left branch of current node
-            if(node->left == nullptr){
-                //checking if there is place for new Node in the left branch of current node
-                // if it is, we are creating new node as left child(or leaf idk honestly and english is so hard) of current node
+    void addNode(TreeNode*& node, int value) {
+        if (node == nullptr) {
+            node = new TreeNode(value);
+        } else {
+            if (node->left == nullptr) {
                 node->left = new TreeNode(value);
-
-                //increasing count of nodes in tree
-                countOfNodes++;
-            }else{
-                //if there is already left child of current node, we call addTo method again and passing
-                //left child of current node and same value of New node as an arguments
-                _addTo(node->left, value);
-            }
-        }else if(value > node->value){
-            //checks if value of new Node is bigger than value of given node
-            //if it is, we should look for place for new node in the right branch of current node
-            if(node->right == nullptr){
-                //checking if there is place for new Node in the right branch of current node
-                // if it is, we are creating new node as right child of current node
+            } else if (node->right == nullptr) {
                 node->right = new TreeNode(value);
-                countOfNodes++;
-            }else{
-                //if there is already right child of current node, we call addTo method again and passing
-                //right child of current node and same value of New node as an arguments
-                _addTo(node->right, value);
+            } else {
+                addNode(node->left, value);
             }
-
-        }else{
-            //if we have node in tree with same value as given one. We are printing this and just return
-            //what have u expected?
-            cout << "Node with given value already exist\n";
-            return;
         }
-
     }
 
-
-
+    void destroyTree(TreeNode* node) {
+        if (node != nullptr) {
+            destroyTree(node->left);
+            destroyTree(node->right);
+            delete node;
+        }
+    }
 
 public:
-    //constructor
-    BinaryTree() : root(nullptr), countOfNodes(0) {}
+    BinaryTree() : root(nullptr) {}
 
-    void insert(int value){
-        // method for creating and inserting node with given value into tree
-        if(root== nullptr){
-            // checks if tree is empty and creating new node as a root of tree
-            root = new TreeNode(value);
-            countOfNodes++;
-            return;
-        }
-        //recursive method for node inserting
-        _addTo(root, value);
+    ~BinaryTree() {
+        destroyTree(root);
+    }
+
+    void addNode(int value) {
+        addNode(root, value);
     }
 
     TreeNode* getRoot(){
         return root;
     }
-
 
 };
 
@@ -289,10 +245,7 @@ public:
     }
 };
 
-// In fact, you need only this function for exam.
-// TreeNode, BinaryTree, QueueNode and Queue classes is more like environment for this function.
 void task2(TreeNode* root){
-    // for exam you need only this function
     if(root == nullptr){
         return;
     }
@@ -480,22 +433,22 @@ int main(){
 
     // task 2
 
-    BinaryTree bst;
-    bst.insert(50);
-    bst.insert(10);
-    bst.insert(60);
-    bst.insert(5);
-    bst.insert(40);
-    bst.insert(55);
-    bst.insert(70);
-    bst.insert(1);
-    bst.insert(4);
-    bst.insert(20);
-    bst.insert(30);
-    bst.insert(75);
-    bst.insert(72);
+    BinaryTree bt;
+    bt.addNode(50);
+    bt.addNode(10);
+    bt.addNode(60);
+    bt.addNode(5);
+    bt.addNode(40);
+    bt.addNode(55);
+    bt.addNode(70);
+    bt.addNode(1);
+    bt.addNode(4);
+    bt.addNode(20);
+    bt.addNode(30);
+    bt.addNode(75);
+    bt.addNode(72);
     cout << "Task 2:\n";
-    task2(bst.getRoot());
+    task2(bt.getRoot());
     cout << "\n\n";
 
     // task 3
