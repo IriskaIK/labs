@@ -13,9 +13,10 @@
 
 
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
-// task 1
+// task 1 -------------------------------------------------------------------------------------------------------------
 class NodeL {
 public:
     int data;
@@ -150,7 +151,104 @@ void task1(NodeL* headOfListToCopy){
 };
 
 
-// task 3
+// task 2 -------------------------------------------------------------------------------------------------------------
+class TreeNode {
+public:
+    int value;
+    TreeNode* parent;
+    TreeNode* child1;
+    TreeNode* child2;
+    TreeNode* child3;
+
+    TreeNode(int val) : value(val), parent(nullptr), child1(nullptr), child2(nullptr), child3(nullptr) {}
+};
+
+class TernaryTree {
+private:
+    TreeNode* root;
+
+public:
+    TernaryTree() : root(nullptr) {}
+
+    TreeNode* getRoot() {
+        return root;
+    }
+
+    void setRoot(int val) {
+        if (root == nullptr) {
+            root = new TreeNode(val);
+        } else {
+            root->value = val;
+        }
+    }
+
+    TreeNode* addChild(TreeNode* parent, int val) {
+        if (parent == nullptr) {
+            std::cout << "Parent node is null.\n";
+            return nullptr;
+        }
+
+        TreeNode* newNode = new TreeNode(val);
+        newNode->parent = parent;
+
+        if (parent->child1 == nullptr) {
+            parent->child1 = newNode;
+        } else if (parent->child2 == nullptr) {
+            parent->child2 = newNode;
+        } else if (parent->child3 == nullptr) {
+            parent->child3 = newNode;
+        } else {
+            std::cout << "Parent already has 3 children.\n";
+            delete newNode;
+            newNode = nullptr;
+        }
+
+        return newNode;
+    }
+
+    void printTree(TreeNode* node, int depth = 0) {
+        if (node == nullptr) return;
+
+        for (int i = 0; i < depth; ++i) {
+            std::cout << "  ";
+        }
+        std::cout << node->value << "\n";
+
+        printTree(node->child1, depth + 1);
+        printTree(node->child2, depth + 1);
+        printTree(node->child3, depth + 1);
+    }
+
+    ~TernaryTree() {
+        destroyTree(root);
+    }
+
+private:
+    void destroyTree(TreeNode* node) {
+        if (node == nullptr) return;
+
+        destroyTree(node->child1);
+        destroyTree(node->child2);
+        destroyTree(node->child3);
+
+        delete node;
+    }
+};
+
+int task3(TreeNode* node) {
+    if (node == nullptr) {
+        return 0;
+    }
+
+    int height1 = task3(node->child1);
+    int height2 = task3(node->child2);
+    int height3 = task3(node->child3);
+
+    return 1 + max({height1, height2, height3});
+}
+
+
+// task 3 -------------------------------------------------------------------------------------------------------------
 
 const int rows = 4;
 const int cols = 4;
@@ -230,7 +328,6 @@ void task3(int startVertex, int distance, bool* result, GraphNode* GraphArr[]){
 
     findVerticesAtDistanceUtil(startVertex, 0, distance, result, visited, GraphArr);
 
-
     cout << "Vertices at distance " << distance << " from vertex " << startVertex + 1 << " are: ";
     for (int i = 0; i < rows; i++){
         if (result[i]) {
@@ -257,28 +354,46 @@ int main(){
 
     // task 2
 
+    TernaryTree tree;
+    tree.setRoot(1);
+
+    TreeNode* root = tree.getRoot();
+    TreeNode* child1 = tree.addChild(root, 2);
+    TreeNode* child2 = tree.addChild(root, 3);
+    TreeNode* child3 = tree.addChild(root, 4);
+
+    TreeNode* child4 = tree.addChild(child1, 5);
+    tree.addChild(child2, 6);
+    tree.addChild(child3, 7);
+
+    TreeNode* child5 = tree.addChild(child4, 10);
+    tree.addChild(child4, 7);
+
+    int height = task3(tree.getRoot());
+    std::cout << "Height of tree: " << height << "\n";
+
 
 
     // task 3
 
-    Graph graph;
-    int matrixOfGraph[rows][cols]= {
-            {0, 1, 1, 0},
-            {1, 0, 0, 1},
-            {1, 0, 0, 1},
-            {0, 1, 1, 0},
-    };
-
-
-    graph.convertMatrix(matrixOfGraph);
-    graph.print();
-
-    int startVertex = 0; // example starting vertex (0-based index)
-    int distance = 3; // example distance
-
-    bool result[rows];
-
-    task3(startVertex, distance, result, graph.arr);
+//    Graph graph;
+//    int matrixOfGraph[rows][cols]= {
+//            {0, 1, 1, 0},
+//            {1, 0, 0, 1},
+//            {1, 0, 0, 1},
+//            {0, 1, 1, 0},
+//    };
+//
+//
+//    graph.convertMatrix(matrixOfGraph);
+//    graph.print();
+//
+//    int startVertex = 0; // example starting vertex (0-based index)
+//    int distance = 3; // example distance
+//
+//    bool result[rows];
+//
+//    task3(startVertex, distance, result, graph.arr);
 
 
 

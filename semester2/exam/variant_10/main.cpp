@@ -105,69 +105,24 @@ void task1(Node* head){
     }
 }
 
-void task2_1(int arr[], int size){
-    int n = size;
-    int sortedArr[n];
-
-    for(int i = 0; i<n; i++){
-        cout << arr[i] << " ";
-    }
-    cout << '\n';
-
-    for (int i = 0; i < n; ++i) {
-        int k = 0;
-        for (int j = 0; j < n; ++j) {
-            if (arr[j] < arr[i] || (arr[j] == arr[i] && j < i)) {
-                ++k;
-            }
-        }
-        sortedArr[k] = arr[i];
-    }
-
-    for(int i = 0; i<n; i++){
-        cout << sortedArr[i] << " ";
-    }
-    cout << '\n';
-}
 
 
-void swap(int& a, int& b) {
-    int temp = a;
-    a = b;
-    b = temp;
-}
 
-void task2_2(int arr[], int size) {
-    // don't work for array where you have repeated numbers
-    int n = size;
+void task2(int arr[], int size) {
+    for (int i = 1; i < size; ++i) {
+        int key = arr[i];
+        int j = i - 1;
 
-    for(int i = 0; i<n; i++){
-        cout << arr[i] << " ";
-    }
-    cout << '\n';
-
-    for (int i = 0; i < n; ++i) {
-
-        // Порівняння з усіма іншими елементами і підрахунок кількості менших
-        int k = 0;
-        for(int j = i+1; j<n; j++){
-            if(arr[i] > arr[j]){
-                k++;
-            }
-        }
-        if(k!=0){
-            swap(arr[i], arr[i+k]);
-            if (i!=n-1) i--;
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j--;
         }
 
-    }
+        arr[j + 1] = key;
 
-    for(int i = 0; i<n; i++){
-        cout << arr[i] << " ";
     }
-    cout << '\n';
-
 }
+
 
 
 
@@ -176,10 +131,11 @@ class TreeNode {
 public:
 
     int value;
+    int index;
     TreeNode* left;
     TreeNode* right;
     //constructor
-    explicit TreeNode(int value) : value(value), left(nullptr), right(nullptr) {}
+    explicit TreeNode(int value) : value(value), left(nullptr), right(nullptr), index(0) {}
 };
 
 
@@ -215,7 +171,8 @@ private:
             return;
         }
         _inorderTraversal(node->left, counter);
-        cout << "Node " << ++counter << ": " << node->value << "\n";
+        node->index = ++counter;
+        cout << "Node #" << node->index << ": " << node->value << "\n";
         _inorderTraversal(node->right, counter);
     }
 
@@ -277,7 +234,7 @@ int main(){
     // місці до того
     // Короче, спитайте іванова, який варіант йому потрібен і перепишіть той, що він попросить.
 
-//    task2_1(arr, 6);
+//    task2(arr, 6);
 
 
     // task 3
