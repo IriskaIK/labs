@@ -8,6 +8,52 @@ using namespace std;
 const int rows = 4;
 const int cols = 4;
 
+
+class QueueNode {
+public:
+    int data;
+    QueueNode* next;
+    QueueNode(int data) : data(data), next(nullptr) {}
+};
+
+class Queue {
+private:
+    QueueNode* front;
+    QueueNode* rear;
+public:
+    Queue() : front(nullptr), rear(nullptr) {}
+
+    void enqueue(int value) {
+        QueueNode* newNode = new QueueNode(value);
+        if (rear == nullptr) {
+            front = rear = newNode;
+        } else {
+            rear->next = newNode;
+            rear = newNode;
+        }
+    }
+
+    int dequeue() {
+        if (front == nullptr) {
+            cout << "Queue is empty\n";
+        }
+        QueueNode* temp = front;
+        int value = front->data;
+        front = front->next;
+        if (front == nullptr) {
+            rear = nullptr;
+        }
+        delete temp;
+        return value;
+    }
+
+    bool isEmpty() {
+        return front == nullptr;
+    }
+
+};
+
+
 class GraphNode {
 public:
     int index; // index of matrix column
@@ -50,6 +96,41 @@ public:
             cout << "\n";
         }
     }
+
+
+    void findNodesAtDistance(int u, int d) {
+        // task 3
+        if (d == 0) {
+            cout << "Node at distance " << d << " from node " << u+1 << ": " << u+1 << "\n";
+            return;
+        }
+
+        bool visited[rows] = {false};
+        int distances[rows] = {0};
+
+        Queue queue;
+        queue.enqueue(u);
+        visited[u] = true;
+
+        while (!queue.isEmpty()) {
+            int current = queue.dequeue();
+            GraphNode* temp = arr[current];
+
+            while (temp) {
+                if (!visited[temp->index]) {
+                    distances[temp->index] = distances[current] + 1;
+                    if (distances[temp->index] == d) {
+                        cout << "Node at distance " << d << " from node " << u+1 << ": " << temp->index + 1 << "\n";
+                    }
+                    queue.enqueue(temp->index);
+                    visited[temp->index] = true;
+                }
+                temp = temp->next;
+            }
+        }
+    }
+
+
 
 
 
@@ -103,6 +184,9 @@ void deleteSelfLoops(GraphNode* graphArr[]){
         }
     }
 }
+
+
+
 
 int main(){
 

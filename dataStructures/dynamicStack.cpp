@@ -55,7 +55,6 @@ public:
             Node* temp = top;
             top = top->next;
             delete temp;
-            cout << 1;
         }
     }
 
